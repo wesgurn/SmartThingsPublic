@@ -24,15 +24,15 @@ metadata {
 	// UI tile definitions
 	tiles {
     	tiles(scale: 2) {
-			multiAttributeTile(name:"moisture", type: "generic", width: 6, height: 4){
-				tileAttribute ("device.moisture", key: "PRIMARY_CONTROL") {
+			multiAttributeTile(name:"water", type: "generic", width: 6, height: 4){
+				tileAttribute ("device.water", key: "PRIMARY_CONTROL") {
 					attributeState "dry", label: "Dry", icon:"st.alarm.water.dry", backgroundColor:"#ffffff"
 					attributeState "wet", label: "Wet", icon:"st.alarm.water.wet", backgroundColor:"#53a7c0"
 				}
 			}
         }
-		main (["moisture"])
-		details(["moisture"])
+		main (["water"])
+		details(["water"])
 	}
 }
 
@@ -97,12 +97,12 @@ private Map parseIasMessage(String description) {
     switch(msgCode) {
         case '0x0020': // Dry
             log.debug 'Detected Dry'
-            resultMap["moisture"] = [name: "moisture", value: "dry"]
+            resultMap["water"] = [name: "water", value: "dry"]
             break
 
         case '0x0021': // Wet
             log.debug 'Detected Moisture'
-            resultMap["moisture"] = [name: "moisture", value: "wet"]
+            resultMap["water"] = [name: "water", value: "wet"]
             break
     }
     return resultMap
